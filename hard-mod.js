@@ -8,12 +8,8 @@ document.addEventListener('mousemove', (event) => {
   const mouseY = event.clientY - 50;
 
   
-  if (mouseX > 0){
-    if (mouseY > 0){
-        
-        if (mouseX < 499){
-            if (mouseY < 499){
-                xOndy = [mouseX-250,-mouseY+250]
+
+                xOndy = [mouseX,-mouseY]
                 
 
                 document.getElementById("vote").addEventListener("click", function(){
@@ -22,27 +18,6 @@ document.addEventListener('mousemove', (event) => {
                   info.innerHTML = "("+xOndy+")";
                   ss = xOndy;
                 });
-                
-
-
-            }else{
-                xOndy = [0,0]
-
-
-                
-            }
-        }else{
-            xOndy = [0,0]
-        }
-
-
-    }else{xOndy = [0,0]}
-  }else{
-    xOndy = [0,0]
-  }
-
-  
-  
 
 });
 
@@ -59,7 +34,11 @@ function saveData() {
 
    const inputValue = Geg
 
-   localStorage.setItem("youserData", inputValue);
+   const savdData = localStorage.getItem("youserData");
+
+   localStorage.setItem("youserData", savdData + "("+inputValue+")");
+
+    //localStorage.setItem("youserData", 0,0);
 
    displaySavedData();
 
@@ -69,28 +48,11 @@ function displaySavedData() {
   const savdData = localStorage.getItem("youserData");
   const saveDataElement = document.getElementById("savdData");
 
+
+
+  test.innerHTML = Geg;
+
   iMember.innerHTML = savdData;
-  const allThe = iMember.innerHTML
-
-  localStorage.setItem("megaMemory", iMember.innerHTML);
-  const savdMemory = localStorage.getItem("megaMemory");
-  const saveDataMomory = document.getElementById("savdMemory");
-
-  test.innerHTML = savdData;
-
 };
+
 window.onload = displaySavedData;
-
-//time to get real
-
-//fs = require("fs");
-
-//const vots = '[0,0,-40,120]';
-
-//const showVots = JSON .stringify(vots);
-
-//fs.writeFile("vots.json", showVots)
-
-
-
-//console.log(showVots);
